@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout
 from .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from django.contrib.auth import authenticate
 
 def signup(request):
     if request.method == 'POST':
@@ -40,4 +41,6 @@ def logout_view(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect('home')  # Redirect to home page or login page
+
+
 

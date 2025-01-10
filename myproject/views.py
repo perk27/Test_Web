@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 def homepage(request):
-    return HttpResponse("Welcome to the Homepage!")
+  return render(request, 'templates/registration/base.html')  # Render the template
