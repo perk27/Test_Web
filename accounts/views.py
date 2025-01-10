@@ -4,7 +4,6 @@ from .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -27,7 +26,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f"You are now logged in as {username}")
-                return redirect('home')  # Redirect to home page or any page you prefer
+                return redirect('home')  # Redirect to the 'home' URL pattern
             else:
                 messages.error(request, "Invalid username or password.")
         else:
@@ -40,7 +39,8 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
-    return redirect('home')  # Redirect to home page or login page
+    return redirect('/')  # Redirect to home page or login page
 
-
-
+# Home View
+def home(request):
+    return render(request, 'registration/base.html')
